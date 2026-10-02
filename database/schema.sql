@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS sessions;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS application_errors;
+DROP TABLE IF EXISTS deployments;
+CREATE TABLE sessions(session_id INTEGER PRIMARY KEY,session_date TEXT,device TEXT,traffic_source TEXT);
+CREATE TABLE products(product_id INTEGER PRIMARY KEY,product_name TEXT,category TEXT,price REAL);
+CREATE TABLE orders(order_id INTEGER PRIMARY KEY,session_id INTEGER,product_id INTEGER,order_date TEXT,amount REAL,status TEXT);
+CREATE TABLE payments(payment_id INTEGER PRIMARY KEY,order_id INTEGER,payment_method TEXT,status TEXT);
+CREATE TABLE application_errors(error_id INTEGER PRIMARY KEY,error_date TEXT,device TEXT,error_type TEXT,count INTEGER);
+CREATE TABLE deployments(deployment_id INTEGER PRIMARY KEY,deployment_date TEXT,version TEXT,component TEXT);
